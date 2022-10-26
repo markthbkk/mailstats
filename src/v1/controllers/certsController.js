@@ -19,35 +19,35 @@ exports.getAllCerts = async (req, res) => {
   }
 };
 
-exports.getTodo = async (req, res) => {
-  try {
-    const todo = await Todo.findById(req.params.id);
+// exports.getTodo = async (req, res) => {
+//   try {
+//     const todo = await Todo.findById(req.params.id);
 
-    const customers = await Customer.find();
-    let customersArray = customers.filter(
-      (el) => el.customer !== todo.customer
-    );
-    customersArray.unshift({ customer: todo.customer });
+//     const customers = await Customer.find();
+//     let customersArray = customers.filter(
+//       (el) => el.customer !== todo.customer
+//     );
+//     customersArray.unshift({ customer: todo.customer });
 
-    console.log(customersArray);
+//     console.log(customersArray);
 
-    console.log(todo);
+//     console.log(todo);
 
-    res.render('createEditTodo', {
-      layout: 'createEditMain',
-      documentTitle: todo.title,
-      customers: customersArray,
-      description: todo.description,
-      created: new Date(todo.created).toLocaleString().replace(',', ''),
-      documentID: todo._id,
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
+//     res.render('createEditTodo', {
+//       layout: 'createEditMain',
+//       documentTitle: todo.title,
+//       customers: customersArray,
+//       description: todo.description,
+//       created: new Date(todo.created).toLocaleString().replace(',', ''),
+//       documentID: todo._id,
+//     });
+//   } catch (err) {
+//     res.status(404).json({
+//       status: 'fail',
+//       message: err,
+//     });
+//   }
+// };
 
 exports.createCert = async (req, res) => {
   try {    
@@ -63,46 +63,46 @@ res.send(newCert);
   }
 };
 
-exports.updateTodo = async (req, res) => {
-  console.log(req.body);
+// exports.updateTodo = async (req, res) => {
+//   console.log(req.body);
+
+//   try {
+//     const todo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
+//       new: true,
+//       runValidators: true,
+//     });
+
+//     // const newDesc = todo.description
+//     //   .replaceAll('\r\n\r\n', '<br>')
+//     //   .replaceAll('\r\n', '<br>');
+
+//     // console.log(newDesc);
+
+//     // const updatedDesc = insertHREF(newDesc);
+
+//     // console.log(updatedDesc);
+
+//     res.render('showSingleTodo', {
+//       layout: 'main',
+//       title: todo.title,
+//       customer: todo.customer,
+//       description: todo.description,
+//       created: new Date(todo.created).toLocaleString().replace(',', ''),
+//       documentID: todo._id,
+//     });
+//   } catch (err) {
+//     res.status(400).json({
+//       status: 'fail',
+//       message: err,
+//     });
+//   }
+// };
+
+exports.deleteCert = async (req, res) => {
+  console.log(req.body.id);
 
   try {
-    const todo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-
-    // const newDesc = todo.description
-    //   .replaceAll('\r\n\r\n', '<br>')
-    //   .replaceAll('\r\n', '<br>');
-
-    // console.log(newDesc);
-
-    // const updatedDesc = insertHREF(newDesc);
-
-    // console.log(updatedDesc);
-
-    res.render('showSingleTodo', {
-      layout: 'main',
-      title: todo.title,
-      customer: todo.customer,
-      description: todo.description,
-      created: new Date(todo.created).toLocaleString().replace(',', ''),
-      documentID: todo._id,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
-
-exports.deleteTodo = async (req, res) => {
-  console.log(req.params.id);
-
-  try {
-    await Todo.findByIdAndDelete(req.params.id);
+    await Cert.findByIdAndDelete(req.body.id);
 
     res.status(204).json({
       status: 'success',
@@ -116,21 +116,21 @@ exports.deleteTodo = async (req, res) => {
   }
 };
 
-exports.createTodoTemplate = async (req, res) => {
-  console.log('STARTING');
-  try {
-    const customersArray = await Customer.find();
+// exports.createTodoTemplate = async (req, res) => {
+//   console.log('STARTING');
+//   try {
+//     const customersArray = await Customer.find();
 
-    console.log(customersArray);
+//     console.log(customersArray);
 
-    res.render('createEditTodo', {
-      layout: 'createEditMain',
-      customers: customersArray,
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
+//     res.render('createEditTodo', {
+//       layout: 'createEditMain',
+//       customers: customersArray,
+//     });
+//   } catch (err) {
+//     res.status(404).json({
+//       status: 'fail',
+//       message: err,
+//     });
+//   }
+// };

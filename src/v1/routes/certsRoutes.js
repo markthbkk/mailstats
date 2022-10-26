@@ -3,13 +3,10 @@ const certsController = require('../controllers/certsController');
 
 const router = express.Router();
 
-
 router
   .route('/api/v1/certs')
   .get(certsController.getAllCerts)
   .post(certsController.createCert);
-
-
 
 // router
 //   .route('/api/v1/todos/add')
@@ -29,10 +26,8 @@ router
 //   .route('/api/v1/todos/customers/:id')
 //   .delete(requiresAuth(), customerController.deleteCustomer);
 
-// router
-//   .route('/api/v1/todos/:id')
-//   .get(requiresAuth(), todoController.getTodo)
-//   .post(requiresAuth(), todoController.updateTodo)
-//   .delete(requiresAuth(), todoController.deleteTodo);
+router
+  .route('/api/v1/todos/:id')
+  .delete(certsController.deleteCert);
 
 module.exports = router;
