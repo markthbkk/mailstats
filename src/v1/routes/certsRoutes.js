@@ -27,7 +27,7 @@ router
 //   .delete(requiresAuth(), customerController.deleteCustomer);
 
 router
-  .route('/api/v1/todos/:id')
+  .route('/api/v1/certs/:id')
   .delete(certsController.deleteCert);
 
 module.exports = router;
