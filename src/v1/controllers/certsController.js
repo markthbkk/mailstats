@@ -99,10 +99,10 @@ res.send(newCert);
 // };
 
 exports.deleteCert = async (req, res) => {
-  console.log(req.body.id);
+  console.log(req.params.id);
 
   try {
-    await Cert.findByIdAndDelete(req.body.id);
+    await Cert.findByIdAndDelete(req.params.id);
 
     res.status(204).json({
       status: 'success',
