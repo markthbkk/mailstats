@@ -7,7 +7,7 @@ const certsSchema = new mongoose.Schema(
       required: true,
       unique: true,
       trim: true,
-      minLength: [5, 'Title must be at least 5 characters'],
+      minLength: [4, 'Title must be at least 5 characters'],
     },
     subscriptionStartDate: {
       type: String,
