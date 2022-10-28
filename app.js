@@ -4,10 +4,6 @@ const certsRouter = require('./src/v1/routes/certsRoutes');
 const app = express();
 const cors = require('cors');
 
-// const corsOptions = {
-//     origin: 'http://localhost:3000'
-// }
-
 app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: false }));
