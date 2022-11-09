@@ -6,9 +6,11 @@ exports.getAllSpamStats = async (req, res) => {
 
   try {
 
-     const spamStats = await SpamStat.find();
+    console.log(req.query)
 
-    console.log('done')
+    const selectedDate = req.query.date
+
+    const spamStats = await SpamStat.find({date: selectedDate});
 
     res.status(200).send(spamStats);
   } catch (err) {
