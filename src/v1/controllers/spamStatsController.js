@@ -14,8 +14,8 @@ exports.getAllSpamStats = async (req, res) => {
     
     const spamStatsSorted = spamStats.sort(
       (objA, objB) =>
-        Number(new Date(objB.messageCount)) -
-        Number(new Date(objA.messageCount))
+        Number(objB.messageCount) -
+        Number(objA.messageCount)
     );
 
     res.status(200).send(spamStatsSorted);
