@@ -10,9 +10,15 @@ exports.getAllSpamStats = async (req, res) => {
 
     const selectedDate = req.query.date
 
-    const spamStats = await SpamStat.find({date: selectedDate});
+    const spamStats = await SpamStat.find({ date: selectedDate });
+    
+    const spamStatsSorted = spamStats.sort(
+      (objA, objB) =>
+        Number(new Date(objB.messageCount)) -
+        Number(new Date(objA.messageCount))
+    );
 
-    res.status(200).send(spamStats);
+    res.status(200).send(spamStatsSorted);
   } catch (err) {
     res.status(404).json({
       status: 'fail',
