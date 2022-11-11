@@ -16,4 +16,6 @@ router.route("/api/v1/diskStats").get(diskStatsController.getAllDiskStats);
 
 router.route("/api/v1/spamStats").get(spamStatsController.getAllSpamStats);
 
+router.route("/api/v1/spamStatsDates").get(spamStatsController.getSpamStatsDistinctDates);
+
 module.exports = router;

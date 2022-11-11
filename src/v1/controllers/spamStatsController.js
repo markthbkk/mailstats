@@ -27,5 +27,21 @@ exports.getAllSpamStats = async (req, res) => {
   }
 };
 
+exports.getSpamStatsDistinctDates = async (req, res) => {
+  console.log("Getting Requested spamStats distinct dates");
 
+  try {
+    
+
+    const spamStatsDates = await SpamStat.distinct("date");
+
+    
+    res.status(200).send(spamStatsDates);
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
 
